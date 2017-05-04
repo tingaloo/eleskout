@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous">
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <script>
+      cs = {
+        HEIGHT: 25
+      };
+    </script>
+
+    <script src="js/simulator.js"> </script>
+    <script src="js/building.js"> </script>
+    <script src="js/floor.js"> </script>
+    <script src="js/elevator.js"> </script>
+    <script src="js/person.js"> </script>
+    <script src="js/cloud.js"> </script>
+
+    <link rel="Stylesheet" href="css/style.css"> </link>
+  </head>
+  <body>
+    <div class="cs-controls">
+      <a href="#" class="cs-stop">Stop</a>
+      <a href="#" class="cs-start">Start</a>
+    </div>
+    <div class="cs-target"> </div>
+    <div class="cs-ground"> </div>
+
+    <script>
+      var i;
+      var building = cs.Simulator.addPart(cs.Building);
+      cs.Simulator.addPart(cs.Cloud);
+
+      for (i = 0; i < 10; i++) {
+        cs.Simulator.addPart(cs.Cloud, true);
+      }
+
+      building.addFloor(new cs.Floor());
+      building.addFloor(new cs.Floor());
+      building.addFloor(new cs.Floor('cs-floor-roof'));
+      building.addElevator(new cs.Elevator());
+      building.addPerson(2, new cs.Person(0));
+
+      $('.cs-stop').click(function(event) {
+        cs.Simulator.stop();
+
+        event.stopImmediatePropagation();
+      });
+
+      $('.cs-start').click(function(event) {
+        cs.Simulator.start();
+
+        event.stopImmediatePropagation();
+      });
+
+      cs.Simulator.start();
+    </script>
+  </body>
+</html>

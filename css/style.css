@@ -1,0 +1,145 @@
+html, body, div {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background: #0099cf;
+  height: 100%;
+}
+
+a {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+a:hover {
+  background: rgba(0, 0, 0, .25);
+}
+
+.cs-controls {
+  position: absolute;
+  width: 100%;
+  bottom: 5%;
+  text-align: center;
+  background: #afaf41;
+  padding: 1em;
+  color: #0099cf;
+  z-index: 1;
+}
+
+.cs-controls a {
+  display: inline-block;
+  padding: .25em 1em;
+}
+
+.cs-ground {
+  position: absolute;
+  width: 100%;
+  height: 25%;
+  bottom: 0;
+  background: #8e8e41;
+}
+
+.cs-building {
+  margin: 0 37.5%;
+  position: absolute;
+  width: 25%;
+  bottom: 25%;
+  z-index: 2;
+}
+
+.cs-floor {
+  position: absolute;
+  height: 25px;
+  width: 100%;
+  background: #dcd0dc;
+  bottom: 0;
+  padding: 2px 37% 2px 2px;
+}
+
+.cs-floor-roof {
+  background: none;
+}
+
+.cs-floor-roof::before {
+  content: ' ';
+  position: absolute;
+  top: -15px;
+  right: 0;
+  display: block;
+  width: 50%;
+  box-sizing: border-box;
+  height: 20px;
+  border: 20px solid rgba(0, 0, 0, 0.25);
+  border-top-right-radius: 10px;
+}
+
+.cs-floor::after {
+  content: ' ';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(0,0,0,0.25);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.cs-floor-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.cs-elevator-shaft {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 33%;
+  height: 25px;
+  background: #464466;
+}
+
+.cs-elevator {
+  position: absolute;
+  height: 25px;
+  width: 25%;
+  right: 4%;
+  bottom: 0;
+  background: #8f8899;
+  z-index: 2;
+}
+
+.cs-elevator-open {
+  background: #5f5566;
+}
+
+.cs-person {
+  position: absolute;
+  bottom: 0;
+  width: 10px;
+  z-index: 5;
+  height: 18px;
+  border-radius: 4px;
+  background: #ffaa00;
+}
+
+.cs-cloud {
+  position: absolute;
+  top: 25%;
+  height: auto;
+  padding: .5em 1em;
+  background: rgba(255,255,255,0.75);
+  border-radius: 1em;
+}
+
+.cs-blimp svg {
+  width: 100%;
+  height: auto;
+}
