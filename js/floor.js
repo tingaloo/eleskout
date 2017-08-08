@@ -29,7 +29,6 @@
       var element = $(template).css('bottom', (cs.HEIGHT * id) + 'px');
 
       renderPeople(element.find('.cs-floor-container'), tick);
-
       return element;
     };
 
@@ -38,7 +37,6 @@
      */
     this.loadElevator = function(elevator) {
       var i;
-
       elevator.unloadPassengers(this);
 
       if (calls.length) {
@@ -50,6 +48,10 @@
         people = [];
       }
     };
+
+    this.floors = function() {
+      return uid;
+    }
 
     /**
      * Add a person to the floor

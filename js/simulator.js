@@ -3,7 +3,7 @@
  */
 (function($, cs) {
   cs.Simulator = {
-    speed: 100,
+    speed: 150,
     running: false,
     parts: [],
     template: '<div class="cs-canvas"> </div>',
@@ -62,6 +62,14 @@
     start: function() {
       cs.Simulator.running = true;
       cs.Simulator.step();
+    },
+
+    /**
+     * Toggle running the animation
+     */
+    toggle: function() {
+      cs.Simulator.running ? cs.Simulator.stop() : cs.Simulator.start();
     }
+
   }
 })($, cs);

@@ -27,6 +27,7 @@
     <div class="cs-controls">
       <a href="#" class="cs-stop">Stop</a>
       <a href="#" class="cs-start">Start</a>
+      <a href="#" class="cs-toggle">Toggle</a>
     </div>
     <div class="cs-target"> </div>
     <div class="cs-ground"> </div>
@@ -36,15 +37,22 @@
       var building = cs.Simulator.addPart(cs.Building);
       cs.Simulator.addPart(cs.Cloud);
 
-      for (i = 0; i < 10; i++) {
+      for (i = 0; i < 8; i++) {
         cs.Simulator.addPart(cs.Cloud, true);
       }
 
       building.addFloor(new cs.Floor());
       building.addFloor(new cs.Floor());
+      building.addFloor(new cs.Floor());
+      building.addFloor(new cs.Floor());
+
       building.addFloor(new cs.Floor('cs-floor-roof'));
+      building.addPerson(2, new cs.Person(2,1));
+      building.addPerson(1, new cs.Person(1,4));
+      building.addPerson(2, new cs.Person(2,3));
+
       building.addElevator(new cs.Elevator());
-      building.addPerson(2, new cs.Person(0));
+
 
       $('.cs-stop').click(function(event) {
         cs.Simulator.stop();
@@ -58,7 +66,15 @@
         event.stopImmediatePropagation();
       });
 
+      $('.cs-toggle').click(function(event) {
+        cs.Simulator.toggle();
+
+        event.stopImmediatePropagation();
+      });
+
       cs.Simulator.start();
+
     </script>
+
   </body>
 </html>

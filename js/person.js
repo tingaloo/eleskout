@@ -20,7 +20,9 @@
           // The person is happy they are going where they want to go
           pushedDestination = true;
         } else {
+
           if (this.parent.getFloorLevel() > destination) {
+
             this.parent.pushDownButton();
           } else {
             this.parent.pushUpButton();

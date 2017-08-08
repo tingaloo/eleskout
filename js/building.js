@@ -7,7 +7,6 @@
     var floors = [].concat(fs || []);
     var elevators = [].concat(es || []);
     var template = '<div class="cs-building"> </div>';
-
     /**
      * Get the elevator at the provided floor ID
      */
@@ -21,8 +20,9 @@
       }
     }
 
+
     function callElevator(floor) {
-      console.log('ELEVATORS ON LOCKDOWN');
+      console.log('CALLING ELEVATOR FROM FLOOR: ' +floor);
     }
 
     /**
@@ -34,8 +34,6 @@
       if (floors.length) {
         for (i = 0; i < floors.length; i++) {
           elevator = getElevatorAtFloor(i);
-
-          // Only load the elevator if the doors are open
           if (elevator && elevator.areDoorsOpen()) {
             floors[i].loadElevator(elevator);
           } else if (!elevator) {

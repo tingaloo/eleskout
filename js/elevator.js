@@ -7,6 +7,8 @@
     var currentFloor = 0;
     var targetFloor = undefined;
     var doorsClosed = true;
+    var direction = 'UP';
+    var maxFloors = undefined;
     var calls = [];
     var people = [];
     var template = '<div class="cs-elevator"></div>';
@@ -15,13 +17,22 @@
      * Logic to move the elevator
      */
     function move() {
-      console.log('--- - ---');
+      console.log("stand back, doors closing")
+      this.closeDoors();
+
+      if (direction === 'UP') {
+        currentFloor++;
+      } else {
+        currentFloor--;
+      }
+      this.openDoors();
     }
 
     /**
      * Render the elevator and the people inside of it
      */
     this.render = function(tick) {
+
       var element;
       var i;
 
@@ -64,8 +75,6 @@
      */
     this.pushButton = function(destination) {
       calls.push(destination);
-
-      this.closeDoors();
     };
 
     /**
@@ -77,11 +86,33 @@
     };
 
     /**
+     * Change direction of elevator when reaching rooftop
+     */
+    this.changeDirection = function(maxFloors) {
+      if (currentFloor === maxFloors - 1) {
+        direction = 'DOWN';
+      } else if (currentFloor === 0) {
+        direction = 'UP'
+      }
+    }
+
+    /**
      * Remove all people from the elevator and put
      * them onto the provided floor
      */
     this.unloadPassengers = function(floor) {
-      throw new Error('DEVELOPERS CANNOT ESCAPE');
+
+      maxFloors = floor.floors()
+
+      this.changeDirection(maxFloors);
+
+      for (var i =0 ; i <people.length; i++) {
+        if (calls[i] === currentFloor) {
+          floor.addPerson(people[i])
+          people.splice(i, 1)
+          calls.splice(i,1)
+        }
+      }
     }
 
     /**
